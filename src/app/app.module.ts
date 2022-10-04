@@ -3,14 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AllatainkComponent } from './allataink/allataink.component';
+import { UjLakokComponent } from './uj-lakok/uj-lakok.component';
+import { NyitoOldalComponent } from './nyito-oldal/nyito-oldal.component';
+
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AllatainkComponent,
+    UjLakokComponent,
+    NyitoOldalComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
