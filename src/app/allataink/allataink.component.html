@@ -26,6 +26,15 @@
                 </tbody>
         
             </table>
+
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div *ngIf="hibaUzenet != ''" class="alert alert-danger alert-dismissible" role="alert">
+                    <strong>Hibaüzenete helye</strong>
+                    <button type="button" class="btn-close" (click)="hibaUzenet == ''"></button>
+                </div>
+            </div>
         </div>
     </div>
 

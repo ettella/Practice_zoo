@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { map, tap } from 'rxjs';
+import { catchError, map, tap, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-allataink',
@@ -11,6 +11,7 @@ export class AllatainkComponent implements OnInit {
 
   allatok: any[] = [];
   allatokFejlec: string[] = ['nev', 'faj', 'gondozo', 'helye', 'erkezes'];
+  hibaUzenet: string = '';
 
   constructor(private http: HttpClient) { }
 
@@ -18,6 +19,10 @@ export class AllatainkComponent implements OnInit {
 
     this.http.get<any>('https://allatkert-cfc15-default-rtdb.europe-west1.firebasedatabase.app/allatok.json')
     .pipe(
+      catchError(( error => {
+        this.hibaUzenet = error.message;
+        return throwError(error);
+      })),
       map( allatok => {
           let ujAllatok: any[] = [];   //object to array: mapping, because of keys:
           Object.entries(allatok).forEach(([key,value]) =>{
